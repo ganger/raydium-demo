@@ -24,4 +24,3 @@ app.listen(3000, () => {
   console.log('Express server running at http://localhost:3000/');
 });
 
-setInterval(() => {}, 1000);
