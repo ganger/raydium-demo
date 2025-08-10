@@ -180,4 +180,4 @@ export const fetchPositionInfo = async ({
 }
 
 /** uncomment code below to execute */
-// fetchPositionInfo({ positionNftMint: new PublicKey('position nft mint') })
+ //fetchPositionInfo({ positionNftMint: new PublicKey('D6utSDCbSxpjLDqoTLAaX7KBS4oCNjf6cRGZ4hMVPWk') })
