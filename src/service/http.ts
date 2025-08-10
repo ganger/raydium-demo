@@ -12,7 +12,7 @@ app.get('/', async (req, res) => {  // 注意这里添加了 async
     await fetchPositionInfo({
       positionNftMint: new PublicKey('D6utSDCbSxpjLDqoTLAaX7KBS4oCNjf6cRGZ4hMVPWk')
     });
-
+    console.log("ok")
     res.send(`Hello ${name}, age ${age}!`);
   } catch (error) {
     console.error('Error:', error);  // 打印错误日志
@@ -23,3 +23,5 @@ app.get('/', async (req, res) => {  // 注意这里添加了 async
 app.listen(3000, () => {
   console.log('Express server running at http://localhost:3000/');
 });
+
+setInterval(() => {}, 1000);
