@@ -55,14 +55,9 @@ export const fetchPositionInfo = async ({
 
   let poolInfo: ApiV3PoolInfoConcentratedItem
 
-  if (raydium.cluster === 'mainnet') {
-    poolInfo = (
-      await raydium.api.fetchPoolById({ ids: position.poolId.toBase58() })
-    )[0] as ApiV3PoolInfoConcentratedItem
-  } else {
-    const data = await raydium.clmm.getPoolInfoFromRpc(position.poolId.toBase58())
-    poolInfo = data.poolInfo
-  }
+  poolInfo = (
+    await raydium.api.fetchPoolById({ ids: position.poolId.toBase58() })
+  )[0] as ApiV3PoolInfoConcentratedItem
 
   const epochInfo = await raydium.connection.getEpochInfo()
 
@@ -175,9 +170,11 @@ export const fetchPositionInfo = async ({
       mint: r.mint.symbol.replace(/WSOL/gi, 'SOL'),
       amount: r.amount.toString(),
     })),
+    tickLow:position.tickLower,
+    tickUpper:position.tickUpper,
   })
  // if (!notExit) process.exit() // if you don't want to end up node execution, comment this line
 }
 
 /** uncomment code below to execute */
- //fetchPositionInfo({ positionNftMint: new PublicKey('D6utSDCbSxpjLDqoTLAaX7KBS4oCNjf6cRGZ4hMVPWk') })
+ fetchPositionInfo({ positionNftMint: new PublicKey('D6utSDCbSxpjLDqoTLAaX7KBS4oCNjf6cRGZ4hMVPWk') })
