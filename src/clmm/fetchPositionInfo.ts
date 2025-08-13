@@ -176,6 +176,25 @@ export const fetchPositionInfo = async ({
       amount: r.amount.toString(),
     })),
   })
+
+  return{
+    pool: {
+      id: poolInfo.id,
+      symbol: `${poolInfo.mintA.symbol} - ${poolInfo.mintB.symbol}`,
+      mintA: poolInfo.mintA,
+      mintB: poolInfo.mintB,
+    },
+    position: {
+      nftMint: position.nftMint.toBase58(),
+      liquidity: position.liquidity.toString(),
+      tickLower: position.tickLower,
+      tickUpper: position.tickUpper,
+    },
+    priceRange: {
+      lower: priceLower.price.toString(),
+      upper: priceUpper.price.toString(),
+    },
+  }
  // if (!notExit) process.exit() // if you don't want to end up node execution, comment this line
 }
 
