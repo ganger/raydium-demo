@@ -22,7 +22,7 @@ export const fetchWalletPositionInfo = async () => {
   /** if you don't want to use sdk fetch owner all position info, try below to fetch by wallet */
    const wallet = new PublicKey('GLniXqcPArMhPju83aeCuwqFEEbN9yqRc813CJDg8dEg')
    const [ownerTokenAccountResp, ownerToken2022AccountResp] = await Promise.all([
-  //   connection.getTokenAccountsByOwner(wallet, { programId: TOKEN_PROGRAM_ID }),
+     connection.getTokenAccountsByOwner(wallet, { programId: TOKEN_PROGRAM_ID }),
      connection.getTokenAccountsByOwner(wallet, { programId: TOKEN_2022_PROGRAM_ID }),
    ])
    const possibleMints: PublicKey[] = []
