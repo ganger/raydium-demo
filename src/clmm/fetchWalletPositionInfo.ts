@@ -20,17 +20,17 @@ export const fetchWalletPositionInfo = async () => {
   const lockPositionInfo = await raydium.clmm.getOwnerLockedPositionInfo({ programId: CLMM_LOCK_PROGRAM_ID }) // devnet:  DEVNET_PROGRAM_ID.CLMM_LOCK_PROGRAM_ID
 
   /** if you don't want to use sdk fetch owner all position info, try below to fetch by wallet */
-  // const wallet = new PublicKey('your wallet')
-  // const [ownerTokenAccountResp, ownerToken2022AccountResp] = await Promise.all([
+   const wallet = new PublicKey('GLniXqcPArMhPju83aeCuwqFEEbN9yqRc813CJDg8dEg')
+   const [ownerTokenAccountResp, ownerToken2022AccountResp] = await Promise.all([
   //   connection.getTokenAccountsByOwner(wallet, { programId: TOKEN_PROGRAM_ID }),
-  //   connection.getTokenAccountsByOwner(wallet, { programId: TOKEN_2022_PROGRAM_ID }),
-  // ])
-  // const possibleMints: PublicKey[] = []
-  // for (const { account } of [...ownerTokenAccountResp.value, ...ownerToken2022AccountResp.value]) {
-  //   const accountInfo = AccountLayout.decode(account.data)
-  //   const { mint, amount } = accountInfo
-  //   if (amount.toString() === '1') possibleMints.push(mint)
-  // }
+     connection.getTokenAccountsByOwner(wallet, { programId: TOKEN_2022_PROGRAM_ID }),
+   ])
+   const possibleMints: PublicKey[] = []
+   for (const { account } of [...ownerTokenAccountResp.value, ...ownerToken2022AccountResp.value]) {
+     const accountInfo = AccountLayout.decode(account.data)
+     const { mint, amount } = accountInfo
+     if (amount.toString() === '1') possibleMints.push(mint)
+   }
 
   // // devent: DEVNET_PROGRAM_ID.CLMM_PROGRAM_ID
   // const allPositionKey = possibleMints.map((key) => getPdaPersonalPositionAddress(CLMM_PROGRAM_ID, key).publicKey)

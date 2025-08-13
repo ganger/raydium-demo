@@ -4,6 +4,10 @@ import { fetchPositionInfo } from '../clmm/fetchPositionInfo';
 
 const app = express();
 
+process.on('uncaughtException', (error) => {
+  console.error('未捕获的异常:', error);
+});
+
 app.get('/', async (req, res) => {  // 注意这里添加了 async
   const { name, age } = req.query;
 
