@@ -27,7 +27,7 @@ export const fetchWalletPositionInfo = async () => {
    ])
    const possibleMints: PublicKey[] = []
    for (const { account } of [...ownerTokenAccountResp.value, ...ownerToken2022AccountResp.value]) {
-     const accountInfo = AccountLayout.decode(account.data)
+     const accountInfo = AccountLayout.decode(new Uint8Array(account.data))
      const { mint, amount } = accountInfo
      if (amount.toString() === '1') possibleMints.push(mint)
    }
