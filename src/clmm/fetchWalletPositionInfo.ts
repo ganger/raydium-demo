@@ -42,7 +42,7 @@ export const fetchWalletPositionInfo = async () => {
       programId,
       notExit: true,
     })
-    console.log(data.priceRange+"!!!!")
+    console.log(data.priceRange.lower+"-"+data.priceRange.upper)
   }
 
 }
